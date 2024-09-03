@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consulta DNI</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            width: 100%;
+            text-align: center;
+        }
+        h2 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+            color: #555;
+        }
+        input[type="text"] {
+            width: calc(100% - 20px);
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            font-size: 16px;
+        }
+        button {
+            background: #007BFF;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background 0.3s;
+        }
+        button:hover {
+            background: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Consulta de DNI</h2>
+    <form id="dniForm">
+        <label for="dni">Ingrese su DNI:</label>
+        <input type="text" id="dni" name="dni" required pattern="\d{8}" maxlength="8" minlength="8">
+        <button type="submit">Consultar</button>
+    </form>
+</div>
+
+<script>
+    document.getElementById('dniForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+        const dni = document.getElementById('dni').value;
+        const apiKey = '1578f71d-19b3-4ee6-a104-66b8ff7c14cc';  // Asegúrate de mantener la API Key segura
+        const url = `https://api.dniruc.com/api/search/dni/${dni}/${apiKey}`;
+
+        console.log('URL de consulta:', url);
+
+        window.open(url, '_blank');
+    });
+</script>
+
+</body>
+</html>
